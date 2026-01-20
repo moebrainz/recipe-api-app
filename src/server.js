@@ -81,7 +81,7 @@ app.delete("/api/favourites/:userId/:recipeId", async (req, res) => {
       .where(
         and(
           eq(favouritesTable.userId, userId),
-          eq(favouritesTable.recipieId, parseInt(recipieId))
+          eq(favouritesTable.recipeId, parseInt(recipeId))
         )
       );
 
