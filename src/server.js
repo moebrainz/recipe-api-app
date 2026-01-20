@@ -39,9 +39,9 @@ app.get("/api/favourites/:userId", async (req, res) => {
 
 app.post("/api/favourites", async (req, res) => {
   try {
-    const { userId, recipieId, title, image, cookTime, servings } = req.body;
+    const { userId, recipeId, title, image, cookTime, servings } = req.body;
 
-    if (!userId || !recipieId || !title) {
+    if (!userId || !recipeId || !title) {
       return res
         .status(400)
         .json({ message: "Missing required fields", success: false });
@@ -51,7 +51,7 @@ app.post("/api/favourites", async (req, res) => {
       .insert(favouritesTable)
       .values({
         userId,
-        recipieId,
+        recipeId,
         title,
         image,
         cookTime,
@@ -66,11 +66,11 @@ app.post("/api/favourites", async (req, res) => {
   }
 });
 
-app.delete("/api/favourites/:userId/:recipieId", async (req, res) => {
+app.delete("/api/favourites/:userId/:recipeId", async (req, res) => {
   try {
-    const { userId, recipieId } = req.params;
+    const { userId, recipeId } = req.params;
 
-    if (!userId || !recipieId) {
+    if (!userId || !recipeId) {
       return res
         .status(400)
         .json({ message: "Missing required parameters", success: false });
